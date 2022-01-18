@@ -1,0 +1,24 @@
+<h1>Property List</h1>
+<%= link_to 'New property', new_property_path %>
+
+<table>
+  <tr>
+    <th>Property</th>
+    <th>Rent(yen)</th>
+    <th>Address</th>
+    <th>Ages</th>
+    <th>Remarks</th>
+  </tr>
+  <% @properties.each do |prop| %>
+    <tr>
+      <td><%= prop.name %></td>
+      <td><%= prop.rent %></td>
+      <td><%= prop.address %></td>
+      <td><%= prop.age %></td>
+      <td><%= prop.remarks %></td>
+      <td><%= link_to 'Show', property_path(prop) %>
+      <td><%= link_to 'Edit', edit_property_path(prop) %>
+      <td><%= link_to 'Destroy', property_path(prop), method: :delete %>
+    </tr>
+  <% end %>
+</table>

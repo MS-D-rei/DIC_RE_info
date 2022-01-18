@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_050915) do
     t.string "name"
     t.string "rent"
     t.text "address"
-    t.string "ages"
+    t.string "age"
     t.text "remarks"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
