@@ -12,6 +12,8 @@
 <p><%= @property.remarks %></p>
 
 <% if @property.near_stations.any? %>
+
+<% unless @property.near_stations.first.station.empty? %>
 <h4>Close station info</h4>
 <ol>
   <% @near_stations.each do |near_station| %>
@@ -22,4 +24,6 @@
   </li>
   <% end %>
 </ol>
+<% end %>
+
 <% end %>
