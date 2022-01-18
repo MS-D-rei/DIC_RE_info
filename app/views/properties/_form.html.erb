@@ -1,0 +1,45 @@
+<%= form_with(model: @property, local: true) do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %><br>
+
+<%= f.label :rent %>
+<%= f.text_field :rent %><p>円</p><br>
+
+<%= f.label :age %>
+<%= f.text_field :age %><p>year/years old</p><br>
+
+<%= f.label :address %>
+<%= f.text_field :address %><br>
+
+<%= f.label :remarks %>
+<%= f.text_field :remarks %><br>
+
+<h3>closest station 1</h3>
+<%= f.fields_for :near_stations do |near_station| %>
+  <%= near_station.label :station %>
+  <%= near_station.text_field :station %>
+
+  <%= near_station.label :line %>
+  <%= near_station.text_field :line %>
+  
+  <%= near_station.label :how_long_time %>
+  <%= near_station.text_field :how_long_time %>
+<% end %>
+
+<h3>closest station 2</h3>
+<%= f.fields_for :near_stations do |near_station| %>
+  <%= near_station.label :station %>
+  <%= near_station.text_field :station %>
+
+  <%= near_station.label :line %>
+  <%= near_station.text_field :line %>
+  
+  <%= near_station.label :how_long_time %>
+  <%= near_station.text_field :how_long_time %>
+<% end %>
+
+<%= f.submit yield(:button_name) %>
+<% end %>
+
+<%= link_to 'Back', :back %>
