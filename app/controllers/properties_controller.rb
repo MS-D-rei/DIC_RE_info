@@ -6,6 +6,7 @@ class PropertiesController < ApplicationController
   end
 
   def show
+    @near_stations = @property.near_stations
   end
 
   def new
@@ -15,18 +16,19 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     if @property.save
-      redirect_to root_url
+      redirect_to root_url, notice: 'register property'
     else
       render :new
     end
   end
 
   def edit
+    @property.near_stations.build
   end
 
   def update
     if @property.update(property_params)
-      redirect_to root_url
+      redirect_to root_url, notice: 'edit property'
     else
       render :edit
     end
@@ -34,13 +36,14 @@ class PropertiesController < ApplicationController
 
   def destroy
     @property.destroy
-    redirect_to root_url
+    redirect_to root_url, notice: 'delete property'
   end
 
   private
 
   def property_params
-    params.require(:property).permit(:name, :rent, :address, :age, :remarks)
+    params.require(:property).permit(:name, :rent, :address, :age, :remarks,
+      near_stations_attributes: %i[station line how_long_time])
   end
 
   def property_find_id

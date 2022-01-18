@@ -1,7 +1,25 @@
 <h1>Property details</h1>
 
-<h4>Property: </h4><p><%= @property.name %></p>
-<h4>Rent: </h4><p><%= @property.rent %></p>
-<h4>Address: </h4><p><%= @property.address %></p>
-<h4>Ages: </h4><p><%= @property.age %></p>
-<h4>Remarks: </h4><p><%= @property.remarks %></p>
+<h4>Property: </h4>
+<p><%= @property.name %></p>
+<h4>Rent: </h4>
+<p><%= @property.rent %></p>
+<h4>Address: </h4>
+<p><%= @property.address %></p>
+<h4>Ages: </h4>
+<p><%= @property.age %></p>
+<h4>Remarks: </h4>
+<p><%= @property.remarks %></p>
+
+<% if @property.near_stations.any? %>
+<h4>Close station info</h4>
+<ol>
+  <% @near_stations.each do |near_station| %>
+  <li>
+    <p>Station: <%= near_station.station %></p>
+    <p>Line: <%= near_station.line %></p>
+    <p>How long time: <%= near_station.how_long_time %></p>
+  </li>
+  <% end %>
+</ol>
+<% end %>
